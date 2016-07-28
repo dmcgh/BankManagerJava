@@ -64,5 +64,20 @@ public class AccountTest {
         assertEquals(-140f, account.getBalance(), 0.001);
 
     }
+    @Test
+    public void testFilterTransactionByType() throws Exception {
+        Account account = new Account(AccountType.SAVINGS);
+        account.deposit(1000);
+        account.withdraw(200);
+        account.withdraw(100);
+        account.withdraw(100);
+        account.deposit(100);
+
+        //Filer For Deposits & WithDraws
+        assertTrue(account.filterTransaction(TransactionType.DEPOSIT).length == 2);
+        assertTrue(account.filterTransaction(TransactionType.WITHDRAW).length == 3);
+
+
+    }
 
 }

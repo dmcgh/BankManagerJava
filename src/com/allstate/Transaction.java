@@ -19,8 +19,7 @@ public class Transaction {
         this.amount = amount;
         this.transactionType = transactionType;
         this.date = new Date();
-        System.out.println("Date Is " + this.date);
-    }
+      }
 
     public void deleteme(){
 

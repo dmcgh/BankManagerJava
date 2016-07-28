@@ -25,6 +25,7 @@ public class Account {
     }
 
     public void deposit(float amount){
+        if(isClosed) {return;}
         Transaction deposit = new Transaction(amount, TransactionType.DEPOSIT);
         this.balance += amount;
         this.transactionArrayList.add(deposit);
@@ -47,6 +48,10 @@ public class Account {
             this.transactionArrayList.add(withdraw);
         }
 
+    }
+
+    public Float[] filterTransaction(TransactionType transactionType){
+        return this.transactionArrayList.stream().filter(t -> t.getTransactionType() == transactionType).map(t1 -> t1.getAmount()).toArray(Float[]::new);
     }
 
     public String getId() {
